@@ -1,0 +1,48 @@
+Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
+
+## Põhiline kasutuslugu
+1) Kasutaja avab saidi
+2) Kasutaja näeb kaarti, default avatud asukohaga.
+   1) Kui Kasutaja ei anna luba, siis võta Tartu kesklinn
+3) Kaardile on kantud burgerikohtade asukohad
+   1) Välja arvatud 1km raadius Tartu bussijaamast
+4) Asukohale vajutades ilmub kaardi alla
+   1) Koha nimi
+   2) Viimased x pilti
+
+## Tehniline ülevaade
+1) ReactJS frontend
+2) Kui kasutatavatele APIdele sobib, siis backendi ei tule.
+3) Foursquare API geokodeerimine
+   1) Query näide: "burger in x-km radius from location"
+      1) Location on kas kasutaja asukoht või Tartu asukoht
+      2) Parem lahendus oleks, et asukoht on hoopis gmaps praegu tsenter ja raadius on kaardi zoom? 
+         1) Zoom peaks olema vb capitud, et väga väikse zoomi puhul ei tekiks kaardil sigrimigri.
+         2) Kui viitsida, siis võiks vaadata, kuidas asukohti agregeerida (nagu AllTrailsi äpil).
+            1) https://developers.google.com/maps/documentation/javascript/marker-clustering
+   2) Asukoha valimisel teha pildipäring.
+4) Googlemaps lon/lat põhised markerid.
+5) React MUI komponendid stiliseerimiseks?
+   1) Sait peab olema responsiivne.
+   2) Tagataust gradient:)))
+
+# TODO
+* [ ] Create-react-app
+* [ ] Google maps integratsioon
+  * [ ] API võti
+  * [ ] Kaardi integreerimine
+  * [ ] Asukoha pärimine
+  * [ ] Foursquaresi markerid kaardile
+    * [ ] Klasterdamine?
+    * [ ] Onclick päring piltidele
+* [ ] Foursquare integratsioon
+  * [ ] API võti
+  * [ ] Burgerikohtade päring
+    * [ ] 1km bussijaam erand
+    * [ ] Esimene päring avamisel
+    * [ ] Järgnevad päringud kaardi asukoha muutusel
+  * [ ] Päringu vastuste parsimine
+    * [ ] Zod-ts
+* [ ] Stiliseerimine
+  * [ ] Responsiivne pildivõre
+  * [ ] Gradient bg
