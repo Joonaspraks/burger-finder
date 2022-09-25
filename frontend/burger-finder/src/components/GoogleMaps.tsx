@@ -23,7 +23,7 @@ const GoogleMaps = ({ setVenue, setLoading }: Props) => {
 			initMap();
 		});
 
-		const initMap = () => {
+		const initMap = async () => {
 			const map = new google.maps.Map(document.getElementById("map")!, {
 				center: TARTU,
 				zoom: 12,
@@ -34,35 +34,34 @@ const GoogleMaps = ({ setVenue, setLoading }: Props) => {
 				center: TARTU_BUSSIJAAM,
 				radius: exludedAreaRadius,
 			}).setMap(map);
-			getBurgerVenues(TARTU).then(({ results }) => {
-				setLoading(false);
-				results.forEach((result) => {
-					const { latitude, longitude } = result.geocodes.main;
+			const { results } = await getBurgerVenues(TARTU);
+			setLoading(false);
+			results.forEach((result) => {
+				const { latitude, longitude } = result.geocodes.main;
 
-					if (
-						!isInRadius({
-							point1: { lat: latitude, lng: longitude },
-							point2: TARTU_BUSSIJAAM,
-							radius: exludedAreaRadius,
-						})
-					) {
-						const marker = new google.maps.Marker({
-							position: {
-								lat: latitude,
-								lng: longitude,
-							},
-							map,
-							title: result.name,
-						});
+				if (
+					!isInRadius({
+						point1: { lat: latitude, lng: longitude },
+						point2: TARTU_BUSSIJAAM,
+						radius: exludedAreaRadius,
+					})
+				) {
+					const marker = new google.maps.Marker({
+						position: {
+							lat: latitude,
+							lng: longitude,
+						},
+						map,
+						title: result.name,
+					});
 
-						marker.addListener("click", async () => {
-							setLoading(true);
-							const photoList = await getBurgerVenuePhotos(result.fsq_id);
-							setLoading(false);
-							setVenue({ name: result.name, photoList });
-						});
-					}
-				});
+					marker.addListener("click", async () => {
+						setLoading(true);
+						const photoList = await getBurgerVenuePhotos(result.fsq_id);
+						setLoading(false);
+						setVenue({ name: result.name, photoList });
+					});
+				}
 			});
 		};
 	}, []);
