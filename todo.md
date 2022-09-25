@@ -30,11 +30,11 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
    2) Tagataust gradient:)))
 
 # TODO
-* [ ] Create-react-app
+* [x] Create-react-app
 * [ ] Google maps integratsioon
   * [x] API võti
   * [x] Kaardi integreerimine
-  * [ ] Asukoha pärimine
+  * [x] Asukoha pärimine
   * [ ] Foursquaresi markerid kaardile
     * [ ] Klasterdamine?
     * [ ] Onclick päring piltidele
