@@ -1,8 +1,13 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import { useEffect } from "react";
 import useFourSquare from "../hooks/useFourSquare";
+import Venue from "../types/venue";
 
-const GoogleMaps = () => {
+interface Props {
+	setVenue: (venue: Venue) => void;
+}
+
+const GoogleMaps = ({ setVenue }: Props) => {
 	const { getBurgerVenues, getBurgerVenuePhotos } = useFourSquare();
 
 	useEffect(() => {
@@ -57,9 +62,9 @@ const GoogleMaps = () => {
 						title: result.name,
 					});
 
-					marker.addListener("click", () => {
-						const photos = getBurgerVenuePhotos(result.fsq_id);
-						console.log(photos);
+					marker.addListener("click", async () => {
+						const photoList = await getBurgerVenuePhotos(result.fsq_id);
+						setVenue({ name: result.name, photoList });
 					});
 				});
 			});

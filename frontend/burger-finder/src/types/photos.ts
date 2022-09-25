@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export default z.array(
+const PhotosSchema = z.array(
 	z.object({
 		id: z.string().min(1),
 		created_at: z.string().min(1),
@@ -11,3 +11,7 @@ export default z.array(
 		classifications: z.array(z.string()).optional(),
 	})
 );
+
+export type Photos = z.infer<typeof PhotosSchema>;
+
+export default PhotosSchema;
