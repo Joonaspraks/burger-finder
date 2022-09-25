@@ -38,14 +38,14 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
   * [ ] Foursquaresi markerid kaardile
     * [ ] Klasterdamine?
     * [ ] Onclick päring piltidele
-* [ ] Foursquare integratsioon
-  * [ ] API võti
-  * [ ] Burgerikohtade päring
+* [x] Foursquare integratsioon
+  * [x] API võti
+  * [x] Burgerikohtade päring
     * [ ] 1km bussijaam erand
-    * [ ] Esimene päring avamisel
+    * [x] Esimene päring avamisel
     * [ ] Järgnevad päringud kaardi asukoha muutusel
-  * [ ] Päringu vastuste parsimine
-    * [ ] Zod-ts
+  * [x] Päringu vastuste parsimine
+    * [x] Zod-ts
 * [ ] Stiliseerimine
   * [ ] Responsiivne pildivõre
   * [ ] Gradient bg
