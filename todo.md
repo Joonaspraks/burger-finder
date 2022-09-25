@@ -45,7 +45,7 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
       * [ ] Foursquare API lubab teha välistusi
       * > või
       * [x] Lae alla kõik kohad ning seejärel kontrolli iga koordinaati keelatud tsooni pindala vastu
-    * [ ] 1km joonistatud ring
+    * [x] 1km joonistatud ring
   * [x] Päringu vastuste parsimine
     * [x] Zod-ts
 * [ ] Stiliseerimine

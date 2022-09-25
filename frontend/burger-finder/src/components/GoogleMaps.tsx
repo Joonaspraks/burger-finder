@@ -16,7 +16,7 @@ const GoogleMaps = ({ setVenue }: Props) => {
 		const loader = new Loader({
 			apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
 			version: "weekly",
-			libraries: ["geometry"],
+			libraries: ["geometry", "drawing"],
 		});
 		loader.load().then(() => {
 			initMap();
@@ -41,14 +41,16 @@ const GoogleMaps = ({ setVenue }: Props) => {
 		}
 
 		const createInstance = (coordinates: google.maps.LatLngLiteral) => {
+			const map = new google.maps.Map(document.getElementById("map")!, {
+				center: coordinates,
+				zoom: 12,
+			});
+			const exludedAreaRadius = 1000;
+			new google.maps.Circle({
+				center: TARTU_BUSSIJAAM,
+				radius: exludedAreaRadius,
+			}).setMap(map);
 			getBurgerVenues(coordinates).then(({ results }) => {
-				const map = new google.maps.Map(
-					document.getElementById("map") as HTMLElement,
-					{
-						center: coordinates,
-						zoom: 15,
-					}
-				);
 				results.forEach((result) => {
 					const { latitude, longitude } = result.geocodes.main;
 
@@ -56,7 +58,7 @@ const GoogleMaps = ({ setVenue }: Props) => {
 						!isInRadius({
 							point1: { lat: latitude, lng: longitude },
 							point2: TARTU_BUSSIJAAM,
-							radius: 1000,
+							radius: exludedAreaRadius,
 						})
 					) {
 						const marker = new google.maps.Marker({
