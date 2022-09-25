@@ -1,3 +1,5 @@
+import Search from "../schema/search";
+
 const useFourSquare = () => {
 	const getBurgerVenues = async (coordinates: google.maps.LatLngLiteral) => {
 		const res = await fetch(
@@ -8,11 +10,12 @@ const useFourSquare = () => {
 				}),
 			{
 				headers: {
-					Authorization: process.env.REACT_APP_FOUR_SQUARE_API_KEY,
+					Authorization: process.env.REACT_APP_FOUR_SQUARE_API_KEY!,
 				},
 			}
 		);
-		return res.json();
+
+		return Search.parse(await res.json());
 	};
 
 	return { getBurgerVenues };

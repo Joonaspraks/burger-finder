@@ -1,0 +1,179 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "",
+	"type": "object",
+	"properties": {
+		"results": {
+			"type": "array",
+			"uniqueItems": true,
+			"minItems": 1,
+			"items": {
+				"type": "object",
+				"required": ["fsq_id", "distance", "link", "name", "timezone"],
+				"properties": {
+					"fsq_id": {
+						"type": "string",
+						"minLength": 1
+					},
+					"categories": {
+						"type": "array",
+						"uniqueItems": true,
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"required": ["id", "name"],
+							"properties": {
+								"id": {
+									"type": "number"
+								},
+								"name": {
+									"type": "string",
+									"minLength": 1
+								},
+								"icon": {
+									"type": "object",
+									"properties": {
+										"prefix": {
+											"type": "string",
+											"minLength": 1
+										},
+										"suffix": {
+											"type": "string",
+											"minLength": 1
+										}
+									},
+									"required": ["prefix", "suffix"]
+								}
+							}
+						}
+					},
+					"chains": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"required": [],
+							"properties": {}
+						}
+					},
+					"distance": {
+						"type": "number"
+					},
+					"geocodes": {
+						"type": "object",
+						"properties": {
+							"main": {
+								"type": "object",
+								"properties": {
+									"latitude": {
+										"type": "number"
+									},
+									"longitude": {
+										"type": "number"
+									}
+								},
+								"required": ["latitude", "longitude"]
+							}
+						},
+						"required": ["main"]
+					},
+					"link": {
+						"type": "string",
+						"minLength": 1
+					},
+					"location": {
+						"type": "object",
+						"properties": {
+							"country": {
+								"type": "string",
+								"minLength": 1
+							},
+							"cross_street": {
+								"type": "string"
+							},
+							"formatted_address": {
+								"type": "string"
+							},
+							"locality": {
+								"type": "string",
+								"minLength": 1
+							},
+							"postcode": {
+								"type": "string",
+								"minLength": 1
+							},
+							"region": {
+								"type": "string",
+								"minLength": 1
+							}
+						},
+						"required": [
+							"country",
+							"cross_street"
+						]
+					},
+					"name": {
+						"type": "string",
+						"minLength": 1
+					},
+					"related_places": {
+						"type": "object",
+						"properties": {
+							"parent": {
+								"type": "object",
+								"properties": {
+									"fsq_id": {
+										"type": "string",
+										"minLength": 1
+									},
+									"name": {
+										"type": "string",
+										"minLength": 1
+									}
+								},
+								"required": ["fsq_id", "name"]
+							}
+						}
+					},
+					"timezone": {
+						"type": "string",
+						"minLength": 1
+					}
+				}
+			}
+		},
+		"context": {
+			"type": "object",
+			"properties": {
+				"geo_bounds": {
+					"type": "object",
+					"properties": {
+						"circle": {
+							"type": "object",
+							"properties": {
+								"center": {
+									"type": "object",
+									"properties": {
+										"latitude": {
+											"type": "number"
+										},
+										"longitude": {
+											"type": "number"
+										}
+									},
+									"required": ["latitude", "longitude"]
+								},
+								"radius": {
+									"type": "number"
+								}
+							},
+							"required": ["center", "radius"]
+						}
+					},
+					"required": ["circle"]
+				}
+			},
+			"required": ["geo_bounds"]
+		}
+	},
+	"required": ["results", "context"]
+}

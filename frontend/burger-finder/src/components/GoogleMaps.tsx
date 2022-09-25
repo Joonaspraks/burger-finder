@@ -7,7 +7,7 @@ const GoogleMaps = () => {
 
 	useEffect(() => {
 		const loader = new Loader({
-			apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+			apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
 			version: "weekly",
 		});
 		loader.load().then(() => {
@@ -37,10 +37,12 @@ const GoogleMaps = () => {
 		}
 
 		const createInstance = (coordinates: google.maps.LatLngLiteral) => {
-			const burgerVenues = getBurgerVenues(coordinates);
-			new google.maps.Map(document.getElementById("map") as HTMLElement, {
-				center: coordinates,
-				zoom: 15,
+			getBurgerVenues(coordinates).then(({ results }) => {
+				console.log(results)
+				new google.maps.Map(document.getElementById("map") as HTMLElement, {
+					center: coordinates,
+					zoom: 15,
+				});
 			});
 		};
 	}, []);
