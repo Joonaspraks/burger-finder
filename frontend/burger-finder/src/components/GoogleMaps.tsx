@@ -2,8 +2,8 @@ import { Loader } from "@googlemaps/js-api-loader";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { useEffect } from "react";
 import { TARTU, TARTU_BUSSIJAAM } from "../constants/coordinates";
+import { getBurgerVenuePhotos, getBurgerVenues } from "../functions/fourSquare";
 import isInRadius from "../functions/isInRadius";
-import useFourSquare from "../hooks/useFourSquare";
 import Venue from "../types/venue";
 
 interface Props {
@@ -12,8 +12,6 @@ interface Props {
 }
 
 const GoogleMaps = ({ setVenue, setLoading }: Props) => {
-	const { getBurgerVenues, getBurgerVenuePhotos } = useFourSquare();
-
 	useEffect(() => {
 		setLoading(true);
 		const loader = new Loader({
