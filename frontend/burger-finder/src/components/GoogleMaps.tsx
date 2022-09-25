@@ -44,6 +44,7 @@ const GoogleMaps = ({ setVenue }: Props) => {
 			const map = new google.maps.Map(document.getElementById("map")!, {
 				center: coordinates,
 				zoom: 12,
+				disableDefaultUI: true
 			});
 			const exludedAreaRadius = 1000;
 			new google.maps.Circle({
