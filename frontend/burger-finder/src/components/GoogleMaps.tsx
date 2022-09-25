@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useFourSquare from "../hooks/useFourSquare";
 
 const GoogleMaps = () => {
-	const { getBurgerVenues } = useFourSquare();
+	const { getBurgerVenues, getBurgerVenuePhotos } = useFourSquare();
 
 	useEffect(() => {
 		const loader = new Loader({
@@ -48,13 +48,18 @@ const GoogleMaps = () => {
 				results.forEach((result) => {
 					const { latitude, longitude } = result.geocodes.main;
 
-					new google.maps.Marker({
+					const marker = new google.maps.Marker({
 						position: {
 							lat: latitude,
 							lng: longitude,
 						},
 						map,
 						title: result.name,
+					});
+
+					marker.addListener("click", () => {
+						const photos = getBurgerVenuePhotos(result.fsq_id);
+						console.log(photos);
 					});
 				});
 			});

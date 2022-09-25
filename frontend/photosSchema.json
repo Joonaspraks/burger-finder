@@ -1,0 +1,40 @@
+{
+	"type": "array",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"description": "",
+	"uniqueItems": true,
+	"items": {
+		"type": "object",
+		"required": ["id", "created_at", "prefix", "suffix", "width", "height"],
+		"properties": {
+			"id": {
+				"type": "string",
+				"minLength": 1
+			},
+			"created_at": {
+				"type": "string",
+				"minLength": 1
+			},
+			"prefix": {
+				"type": "string",
+				"minLength": 1
+			},
+			"suffix": {
+				"type": "string",
+				"minLength": 1
+			},
+			"width": {
+				"type": "number"
+			},
+			"height": {
+				"type": "number"
+			},
+			"classifications": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

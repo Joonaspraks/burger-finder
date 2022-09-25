@@ -37,7 +37,7 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
   * [x] Asukoha pärimine
   * [x] Foursquaresi markerid kaardile
     * [ ] Klasterdamine?
-    * [ ] Onclick päring piltidele
+    * [x] Onclick päring piltidele
 * [x] Foursquare integratsioon
   * [x] API võti
   * [x] Burgerikohtade päring
