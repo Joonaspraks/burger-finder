@@ -1,5 +1,7 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import { useEffect } from "react";
+import { TARTU, TARTU_BUSSIJAAM } from "../constants/coordinates";
+import isInRadius from "../functions/isInRadius";
 import useFourSquare from "../hooks/useFourSquare";
 import Venue from "../types/venue";
 
@@ -14,17 +16,14 @@ const GoogleMaps = ({ setVenue }: Props) => {
 		const loader = new Loader({
 			apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
 			version: "weekly",
+			libraries: ["geometry"],
 		});
 		loader.load().then(() => {
 			initMap();
 		});
 
 		function initMap(): void {
-			// default location is Tartu
-			let coordinates: google.maps.LatLngLiteral = {
-				lat: 58.378025,
-				lng: 26.728493,
-			};
+			let coordinates = TARTU;
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(
 					(position) => {
@@ -53,19 +52,27 @@ const GoogleMaps = ({ setVenue }: Props) => {
 				results.forEach((result) => {
 					const { latitude, longitude } = result.geocodes.main;
 
-					const marker = new google.maps.Marker({
-						position: {
-							lat: latitude,
-							lng: longitude,
-						},
-						map,
-						title: result.name,
-					});
+					if (
+						!isInRadius({
+							point1: { lat: latitude, lng: longitude },
+							point2: TARTU_BUSSIJAAM,
+							radius: 1000,
+						})
+					) {
+						const marker = new google.maps.Marker({
+							position: {
+								lat: latitude,
+								lng: longitude,
+							},
+							map,
+							title: result.name,
+						});
 
-					marker.addListener("click", async () => {
-						const photoList = await getBurgerVenuePhotos(result.fsq_id);
-						setVenue({ name: result.name, photoList });
-					});
+						marker.addListener("click", async () => {
+							const photoList = await getBurgerVenuePhotos(result.fsq_id);
+							setVenue({ name: result.name, photoList });
+						});
+					}
 				});
 			});
 		};

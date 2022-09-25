@@ -31,19 +31,21 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
 
 # TODO
 * [x] Create-react-app
-* [ ] Google maps integratsioon
+* [x] Google maps integratsioon
   * [x] API võti
   * [x] Kaardi integreerimine
   * [x] Asukoha pärimine
   * [x] Foursquaresi markerid kaardile
-    * [ ] Klasterdamine?
     * [x] Onclick päring piltidele
 * [x] Foursquare integratsioon
   * [x] API võti
   * [x] Burgerikohtade päring
-    * [ ] 1km bussijaam erand
-    * [x] Esimene päring avamisel
-    * [ ] Järgnevad päringud kaardi asukoha muutusel
+    * [x] 1km bussijaam erand
+      * > Kas
+      * [ ] Foursquare API lubab teha välistusi
+      * > või
+      * [x] Lae alla kõik kohad ning seejärel kontrolli iga koordinaati keelatud tsooni pindala vastu
+    * [ ] 1km joonistatud ring
   * [x] Päringu vastuste parsimine
     * [x] Zod-ts
 * [ ] Stiliseerimine
