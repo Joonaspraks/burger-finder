@@ -8,12 +8,14 @@ import Venue from "../types/venue";
 
 interface Props {
 	setVenue: (venue: Venue) => void;
+	setLoading: (isLoading: boolean) => void;
 }
 
-const GoogleMaps = ({ setVenue }: Props) => {
+const GoogleMaps = ({ setVenue, setLoading }: Props) => {
 	const { getBurgerVenues, getBurgerVenuePhotos } = useFourSquare();
 
 	useEffect(() => {
+		setLoading(true);
 		const loader = new Loader({
 			apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
 			version: "weekly",
@@ -53,6 +55,7 @@ const GoogleMaps = ({ setVenue }: Props) => {
 				radius: exludedAreaRadius,
 			}).setMap(map);
 			getBurgerVenues(coordinates).then(({ results }) => {
+				setLoading(false);
 				results.forEach((result) => {
 					const { latitude, longitude } = result.geocodes.main;
 
@@ -73,7 +76,9 @@ const GoogleMaps = ({ setVenue }: Props) => {
 						});
 
 						marker.addListener("click", async () => {
+							setLoading(true);
 							const photoList = await getBurgerVenuePhotos(result.fsq_id);
+							setLoading(false);
 							setVenue({ name: result.name, photoList });
 						});
 					}
