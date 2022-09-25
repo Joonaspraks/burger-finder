@@ -21,6 +21,9 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
          2) Kui viitsida, siis võiks vaadata, kuidas asukohti agregeerida (nagu AllTrailsi äpil).
             1) https://developers.google.com/maps/documentation/javascript/marker-clustering
    2) Asukoha valimisel teha pildipäring.
+   3) Kasutada saaks v2 Venues APIt või v3 Places APIt. 
+      1) > Usage of the V2 Places API has been deprecated for new Projects. Please see our updated documentation for V3 for more details
+
 4) Googlemaps lon/lat põhised markerid.
 5) React MUI komponendid stiliseerimiseks?
    1) Sait peab olema responsiivne.
@@ -29,8 +32,8 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
 # TODO
 * [ ] Create-react-app
 * [ ] Google maps integratsioon
-  * [ ] API võti
-  * [ ] Kaardi integreerimine
+  * [x] API võti
+  * [x] Kaardi integreerimine
   * [ ] Asukoha pärimine
   * [ ] Foursquaresi markerid kaardile
     * [ ] Klasterdamine?
