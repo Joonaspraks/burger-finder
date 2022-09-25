@@ -14,7 +14,7 @@ const Venue = ({ venue }: Props) => {
 	return (
 		<Grid2>
 			<Grid2 display={"flex"} justifyContent={"center"}>
-				<Typography variant={"h3"} gutterBottom>
+				<Typography variant={"h3"} gutterBottom color="white">
 					{venue.name}
 				</Typography>
 			</Grid2>
@@ -38,7 +38,7 @@ const Venue = ({ venue }: Props) => {
 				</ImageList>
 			) : (
 				<Grid2 display={"flex"} justifyContent={"center"}>
-					<Typography variant="h5">
+					<Typography variant="h5" color="white">
 						This venue has no relevant photos
 					</Typography>
 				</Grid2>

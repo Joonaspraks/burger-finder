@@ -48,6 +48,6 @@ Kirjeldus: http://careers.qminder.com/frontend-ninja-assignment/
     * [x] 1km joonistatud ring
   * [x] Päringu vastuste parsimine
     * [x] Zod-ts
-* [ ] Stiliseerimine
-  * [ ] Responsiivne pildivõre
-  * [ ] Gradient bg
+* [x] Stiliseerimine
+  * [x] Responsiivne pildivõre
+  * [x] Gradient bg
