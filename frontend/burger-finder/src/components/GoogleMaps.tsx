@@ -38,10 +38,24 @@ const GoogleMaps = () => {
 
 		const createInstance = (coordinates: google.maps.LatLngLiteral) => {
 			getBurgerVenues(coordinates).then(({ results }) => {
-				console.log(results)
-				new google.maps.Map(document.getElementById("map") as HTMLElement, {
-					center: coordinates,
-					zoom: 15,
+				const map = new google.maps.Map(
+					document.getElementById("map") as HTMLElement,
+					{
+						center: coordinates,
+						zoom: 15,
+					}
+				);
+				results.forEach((result) => {
+					const { latitude, longitude } = result.geocodes.main;
+
+					new google.maps.Marker({
+						position: {
+							lat: latitude,
+							lng: longitude,
+						},
+						map,
+						title: result.name,
+					});
 				});
 			});
 		};

@@ -9,7 +9,14 @@
 			"minItems": 1,
 			"items": {
 				"type": "object",
-				"required": ["fsq_id", "distance", "link", "name", "timezone"],
+				"required": [
+					"fsq_id",
+					"distance",
+					"geocodes",
+					"link",
+					"name",
+					"timezone"
+				],
 				"properties": {
 					"fsq_id": {
 						"type": "string",
@@ -106,10 +113,7 @@
 								"minLength": 1
 							}
 						},
-						"required": [
-							"country",
-							"cross_street"
-						]
+						"required": ["country"]
 					},
 					"name": {
 						"type": "string",

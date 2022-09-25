@@ -22,16 +22,14 @@ export default z.object({
 					.optional(),
 				chains: z.array(z.object({})).optional(),
 				distance: z.number(),
-				geocodes: z
-					.object({
-						main: z.object({ latitude: z.number(), longitude: z.number() }),
-					})
-					.optional(),
+				geocodes: z.object({
+					main: z.object({ latitude: z.number(), longitude: z.number() }),
+				}),
 				link: z.string().min(1),
 				location: z
 					.object({
 						country: z.string().min(1),
-						cross_street: z.string(),
+						cross_street: z.string().optional(),
 						formatted_address: z.string().optional(),
 						locality: z.string().min(1).optional(),
 						postcode: z.string().min(1).optional(),

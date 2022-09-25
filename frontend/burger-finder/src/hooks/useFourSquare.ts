@@ -7,6 +7,7 @@ const useFourSquare = () => {
 				new URLSearchParams({
 					query: "burger",
 					ll: `${coordinates.lat},${coordinates.lng}`,
+					limit: "50",
 				}),
 			{
 				headers: {
