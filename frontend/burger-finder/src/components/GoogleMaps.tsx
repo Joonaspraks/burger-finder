@@ -1,4 +1,5 @@
 import { Loader } from "@googlemaps/js-api-loader";
+import Grid2 from "@mui/material/Unstable_Grid2";
 import { useEffect } from "react";
 import { TARTU, TARTU_BUSSIJAAM } from "../constants/coordinates";
 import isInRadius from "../functions/isInRadius";
@@ -44,7 +45,7 @@ const GoogleMaps = ({ setVenue }: Props) => {
 			const map = new google.maps.Map(document.getElementById("map")!, {
 				center: coordinates,
 				zoom: 12,
-				disableDefaultUI: true
+				disableDefaultUI: true,
 			});
 			const exludedAreaRadius = 1000;
 			new google.maps.Circle({
@@ -81,7 +82,7 @@ const GoogleMaps = ({ setVenue }: Props) => {
 		};
 	}, []);
 
-	return <div id="map" style={{ height: "500px" }} />;
+	return <Grid2 id="map" height={"500px"} marginBottom={"1em"} />;
 };
 
 export default GoogleMaps;
