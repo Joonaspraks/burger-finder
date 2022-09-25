@@ -1,11 +1,13 @@
 import { Loader } from "@googlemaps/js-api-loader";
+import useFourSquare from "../hooks/useFourSquare";
 
 const GoogleMaps = () => {
+	const { getBurgerVenues } = useFourSquare();
+
 	const loader = new Loader({
 		apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
 		version: "weekly",
 	});
-
 	loader.load().then(() => {
 		initMap();
 	});
@@ -33,6 +35,7 @@ const GoogleMaps = () => {
 	}
 
 	const createInstance = (coordinates: google.maps.LatLngLiteral) => {
+		const burgerVenues = getBurgerVenues(coordinates);
 		new google.maps.Map(document.getElementById("map") as HTMLElement, {
 			center: coordinates,
 			zoom: 15,
